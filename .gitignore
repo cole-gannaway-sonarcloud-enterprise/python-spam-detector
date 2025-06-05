@@ -2,6 +2,15 @@
 venv/
 .venv/
 
+# python cache
+__pycache__/
+
+# unit test output
+.coverage
+
+# development files
+.dev/
+
 # Database
 *.db
 
