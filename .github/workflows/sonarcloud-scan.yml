@@ -19,3 +19,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
+        with:
+            args: >
+              -Dsonar.projectKey=cole-gannaway-sonarcloud-enterprise_python-spam-detector
+              -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
