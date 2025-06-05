@@ -85,6 +85,7 @@ def spam_detector():
 
         # Fetch related spam messages using the input as the WHERE clause
         c.execute(f"SELECT message FROM spam_messages WHERE message LIKE '%{message}%'")
+        related_spam_messages = [row[0] for row in c.fetchall()]
         
     # Fetch all spam messages
     c.execute("SELECT message FROM spam_messages")
