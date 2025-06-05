@@ -15,6 +15,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'  # Specify the Python version you want to use
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests and generate coverage report
+        run: |
+          coverage run -m pytest
+          coverage xml -o coverage.xml
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
@@ -24,3 +36,4 @@ jobs:
             args: >
               -Dsonar.projectKey=cole-gannaway-sonarcloud-enterprise_python-spam-detector
               -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+              -Dsonar.python.coverage.reportPaths=coverage.xml
