@@ -37,3 +37,4 @@ jobs:
               -Dsonar.projectKey=cole-gannaway-sonarcloud-enterprise_python-spam-detector
               -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
               -Dsonar.python.coverage.reportPaths=coverage.xml
+              -Dsonar.branch.name=${{ github.event.inputs.branch || github.ref_name }}
