@@ -23,7 +23,6 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install coverage
       - name: Run tests and generate coverage report
         run: |
           coverage run -m pytest
